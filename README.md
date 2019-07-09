@@ -13,5 +13,7 @@ The demo notebook shows how to use the callback. It's only few lines of codes
 - Pytorch 1.1
 - Fastai v1
 
-![Demo scal](https://github.com/tchambon/Tensorboard-in-Fastai/blob/master/demo-scal.png "Example tensorboard")
-![Demo hist](https://github.com/tchambon/Tensorboard-in-Fastai/blob/master/demo-hist.png "Example tensorboard")
+# Tensorboard visualization
+
+![Demo](https://github.com/tchambon/Tensorboard-in-Fastai/blob/master/demo.png "Example tensorboard")
+
