@@ -8,5 +8,9 @@ This repository shows how to create a custom callback to use tensorboard with th
 
 The demo notebook shows how to use the callback. It's only few lines of codes
 
+# Prerequisites
+
+- Pytorch 1.1
+- Fastai v1
 
 
