@@ -6,7 +6,7 @@ This repository shows how to create a custom callback to use tensorboard with th
 
 # How to use it
 
-[The demo notebook](https://github.com/tchambon/Tensorboard-in-Fastai/blob/master/Tensorboard%20for%20fastai%20DEMO.ipynb) shows how to use the callback. It's only a few lines of codes:
+[The demo notebook](https://github.com/tchambon/Tensorboard-in-Fastai/blob/master/Tensorboard%20for%20fastai%20DEMO.ipynb) shows how to use the callback. It's only a few lines of code:
 
 ```
 # Tensorboard object: used to write the logs
@@ -25,6 +25,10 @@ By default, the logs used by tensorboard will be in the local dir "./runs".
 To launch tensorboard, you have to use the following command (from the repository containing the runs dir):
 
 `tensorboard --logdir=./runs`
+
+To use it in your own project, you can import the TensorBoardCallback directory (for instance with a git submodule) and then, use this import line:
+
+`from TensorBoardCallback import *`
 
 # Prerequisites
 
