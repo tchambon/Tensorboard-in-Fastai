@@ -14,4 +14,4 @@ The demo notebook shows how to use the callback. It's only few lines of codes
 - Fastai v1
 
 ![Demo scal](https://github.com/tchambon/Tensorboard-in-Fastai/blob/master/demo-scal.png "Example tensorboard")
-![Demo hist](https://github.com/tchambon/LabelMyTextWidget/blob/master/demo-hist.png "Example tensorboard")
+![Demo hist](https://github.com/tchambon/Tensorboard-in-Fastai/blob/master/demo-hist.png "Example tensorboard")
