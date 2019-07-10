@@ -18,20 +18,28 @@ class TensorBoardFastAI(LearnerCallback):
         self.track_weight = track_weight
         self.track_grad = track_grad
         self.metric_names = metric_names
+        if not hasattr(self.learn, 'epochs_counter'):
+            self.learn.epochs_counter = 0
+        self.delta_epochs = 0
+
+    def on_train_begin(self, **kwargs: Any) -> None:
+        # To be able to track number of epochs across fit calls 
+        self.delta_epochs = self.learn.epochs_counter
         
     def on_epoch_end(self, **kwargs:Any):
         # Do not update stats if we are in the lr_finder case
         if kwargs['last_metrics'][0] != None:
-            
-            self.writer.add_scalar('Loss', kwargs['last_loss'], kwargs['epoch'])
+            self.learn.epochs_counter += 1
+
+            self.writer.add_scalar('Loss', kwargs['last_loss'], kwargs['epoch']+self.delta_epochs)
             for i, met in enumerate(kwargs['last_metrics']):
-                self.writer.add_scalar(self.metric_names[i], met, kwargs['epoch'])
+                self.writer.add_scalar(self.metric_names[i], met, kwargs['epoch']+self.delta_epochs)
                
             
             
             if self.track_weight:
                 for k, v in self.learn.model.state_dict().items():
-                    self.writer.add_histogram(k, v, kwargs['epoch'])
+                    self.writer.add_histogram(k, v, kwargs['epoch']+self.delta_epochs)      
             
                   
     def on_backward_end(self, **kwargs:Any):
@@ -42,5 +50,5 @@ class TensorBoardFastAI(LearnerCallback):
             for i, param in enumerate(self.learn.model.parameters()):
                 grad = param.grad
                 if grad is not None:
-                    self.writer.add_histogram('back'+'.'+keys[i], grad, kwargs['epoch'])
+                    self.writer.add_histogram('back'+'.'+keys[i], grad, kwargs['epoch']+self.delta_epochs)
                     i += 1
